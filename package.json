@@ -1,0 +1,22 @@
+{
+  "name": "dev-profile-generator",
+  "version": "1.0.0",
+  "description": "Build a developer profile with your GitHub account",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cynthiarich/dev-profile-generator.git"
+  },
+  "author": "Cynthia Rich",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cynthiarich/dev-profile-generator/issues"
+  },
+  "homepage": "https://github.com/cynthiarich/dev-profile-generator#readme",
+  "dependencies": {
+    "inquirer": "^7.0.4"
+  }
+}
