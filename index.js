@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 const joi = require("joi");
 const axios = require("axios");
 const generateHTML = require("./generateHTML")
+const puppeteer = require("puppeteer")
 const fs = require("fs");
 
 const questions = [
@@ -45,26 +46,36 @@ function validateColor(color) {
     return joi.validate(color, joi.array().min(1), onValidation);
 }
 
-function writeToFile(data) {
+async function writeToFile(data) {
     console.log(`Create profile for ${data.githubUser} with a ${data.bgcolor} background.`);
 
-    axios
-        .get(`https://api.github.com/users/${data.githubUser}`)
-        .then(res => {
-            console.log(res.data);
-            axios
-                .get(`https://api.github.com/search/repositories?q=user:${data.githubUser}&sort=stars&order=desc`)
-                .then(res2 => {
-                    fs.writeFile(`${data.githubUser}_profile.html`, generateHTML(res.data, res2.data, data.bgcolor), err => {
-                        if (err){
-                            return console.log(err);
-                        }
-                        
-                        console.log("File created!")
-                    });
-                })
-            
-        });
+    try {
+        const res = await axios
+            .get(`https://api.github.com/users/${data.githubUser}`);
+        
+        const res2 = await axios
+            .get(`https://api.github.com/search/repositories?q=user:${data.githubUser}&sort=stars&order=desc`);
+        
+        //const htmlToPDF = new HTMLToPDF(generateHTML(res.data, res2.data, data.bgcolor));
+        const htmlcontent = await generateHTML(res.data, res2.data, data.bgcolor);
+        fs.writeFile(`${data.githubUser}_profile.html`, htmlcontent, err => {
+            if (err){
+                return console.log(err);
+            }
+            console.log("HTML file created!")
+        }); 
+        
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+        //console.log("Navigating to: " + __dirname + `/${data.githubUser}_profile.html`)
+        await page.setContent(htmlcontent);
+        await page.pdf({path: `${data.githubUser}_profile.pdf`});
+        await browser.close();
+        console.log("PDF file created!")
+    }
+    catch (err) {
+        console.log(err);
+    }
 }
 
 function init() {
