@@ -1,32 +1,4 @@
-const colors = {
-  green: {
-    wrapperBackground: "#E6E1C3",
-    headerBackground: "#C1C72C",
-    headerColor: "black",
-    photoBorderColor: "#black"
-  },
-  blue: {
-    wrapperBackground: "#5F64D3",
-    headerBackground: "#26175A",
-    headerColor: "white",
-    photoBorderColor: "#73448C"
-  },
-  pink: {
-    wrapperBackground: "#879CDF",
-    headerBackground: "#FF8374",
-    headerColor: "white",
-    photoBorderColor: "#FEE24C"
-  },
-  red: {
-    wrapperBackground: "#DE9967",
-    headerBackground: "#870603",
-    headerColor: "white",
-    photoBorderColor: "white"
-  }
-};
-
-function generateHTML(data, data2, color) {
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
    <head>
       <meta charset="UTF-8" />
@@ -52,7 +24,7 @@ function generateHTML(data, data2, color) {
          height: 100%;
          }
          .wrapper {
-         background-color: ${colors[color].wrapperBackground};
+         background-color: #5F64D3;
          padding-top: 100px;
          }
          body {
@@ -94,8 +66,8 @@ function generateHTML(data, data2, color) {
          display: flex;
          justify-content: center;
          flex-wrap: wrap;
-         background-color: ${colors[color].headerBackground};
-         color: ${colors[color].headerColor};
+         background-color: #26175A;
+         color: white;
          padding: 10px;
          width: 95%;
          border-radius: 6px;
@@ -106,7 +78,7 @@ function generateHTML(data, data2, color) {
          border-radius: 50%;
          object-fit: cover;
          margin-top: -75px;
-         border: 6px solid ${colors[color].photoBorderColor};
+         border: 6px solid #73448C;
          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
          }
          .photo-header h1, .photo-header h2 {
@@ -149,8 +121,8 @@ function generateHTML(data, data2, color) {
          .card {
            padding: 20px;
            border-radius: 6px;
-           background-color: ${colors[color].headerBackground};
-           color: ${colors[color].headerColor};
+           background-color: #26175A;
+           color: white;
            margin: 20px;
          }
          
@@ -175,51 +147,35 @@ function generateHTML(data, data2, color) {
    <body>
       <div class="wrapper">
          <div class="photo-header">
-            <img src="${data.avatar_url}" alt="Photo of ${data.name}" />
+            <img src="https://avatars0.githubusercontent.com/u/9950121?v=4" alt="Photo of Cynthia Rich" />
             <h1>Hi!</h1>
             <h2>
-            My name is ${data.name}!</h1>
-            <h5>${data.company ? `Currently @ ${data.company}` : ""}</h5>
+            My name is Cynthia Rich!</h1>
+            <h5>Currently @ GitHub</h5>
             <nav class="links-nav">
-               ${
-    data.location
-      ? `<a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/${
-      data.location
-      }"><i class="fas fa-location-arrow"></i> ${
-      data.location
-      }</a>`
-      : ""
-    }
-               <a class="nav-link" target="_blank" rel="noopener noreferrer" href="${
-    data.html_url
-    }"><i class="fab fa-github-alt"></i> GitHub</a>
-               ${
-    data.blog
-      ? `<a class="nav-link" target="_blank" rel="noopener noreferrer" href="${
-      data.blog
-      }"><i class="fas fa-rss"></i> Blog</a>`
-      : ""
-    }
+               <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/NC"><i class="fas fa-location-arrow"></i> NC</a>
+               <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/crichID"><i class="fab fa-github-alt"></i> GitHub</a>
+               
             </nav>
          </div>
          <main>
             <div class="container">
             <div class="row">
                <div class="col">
-                  <h3>${data.bio ? `${data.bio}` : ""}</h3>
+                  <h3></h3>
                </div>
                </div>
                <div class="row">
                <div class="col">
                   <div class="card">
                     <h3>Public Repositories</h3>
-                    <h4>${data.public_repos}</h4>
+                    <h4>45</h4>
                   </div>
                </div>
                 <div class="col">
                 <div class="card">
                   <h3>Followers</h3>
-                  <h4>${data.followers}</h4>
+                  <h4>202</h4>
                 </div>
                </div>
                </div>
@@ -227,15 +183,15 @@ function generateHTML(data, data2, color) {
                <div class="col">
                <div class="card">
                   <h3>Top Repositories</h3>
-                  <h4><i class="fas fa-star"></i> ${data2.items[0].stargazers_count} <a href="${data2.items[0].html_url}" _target="blank">${data2.items[0].name}</a></h4>
-                  <h4><i class="fas fa-star"></i> ${data2.items[1].stargazers_count} <a href="${data2.items[1].html_url}" _target="blank">${data2.items[1].name}</a></h4>
-                  <h4><i class="fas fa-star"></i> ${data2.items[2].stargazers_count} <a href="${data2.items[2].html_url}" _target="blank">${data2.items[2].name}</a></h4>
+                  <h4><i class="fas fa-star"></i> 7 <a href="https://github.com/crichID/learn-command-line" _target="blank">learn-command-line</a></h4>
+                  <h4><i class="fas fa-star"></i> 2 <a href="https://github.com/crichID/crichID.github.io" _target="blank">crichID.github.io</a></h4>
+                  <h4><i class="fas fa-star"></i> 1 <a href="https://github.com/crichID/loving-your-command-line" _target="blank">loving-your-command-line</a></h4>
                   </div>
                </div>
                 <div class="col">
                 <div class="card">
                   <h3>Following</h3>
-                  <h4>${data.following}</h4>
+                  <h4>11</h4>
                   </div>
                </div>
                </div>
@@ -243,7 +199,4 @@ function generateHTML(data, data2, color) {
          </main>
       </div>
    </body>
-</html>`;
-}
-
-module.exports = generateHTML;
+</html>

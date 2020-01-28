@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/cynthiarich/dev-profile-generator#readme",
   "dependencies": {
-    "inquirer": "^7.0.4"
+    "axios": "^0.19.2",
+    "inquirer": "^7.0.4",
+    "joi": "^14.3.1"
   }
 }
