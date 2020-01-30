@@ -70,22 +70,22 @@ function generateHTML(data, data2, color) {
          margin: 0;
          }
          h1 {
-         font-size: 3em;
-         }
-         h2 {
          font-size: 2.5em;
          }
-         h3 {
+         h2 {
          font-size: 2em;
          }
-         h4 {
+         h3 {
          font-size: 1.5em;
          }
-         h5 {
+         h4 {
          font-size: 1.3em;
          }
-         h6 {
+         h5 {
          font-size: 1.2em;
+         }
+         h6 {
+         font-size: 1em;
          }
          .photo-header {
          position: relative;
@@ -147,6 +147,7 @@ function generateHTML(data, data2, color) {
          }
 ​
          .card {
+           width: 30%;
            padding: 20px;
            border-radius: 6px;
            background-color: ${colors[color].headerBackground};
@@ -155,8 +156,8 @@ function generateHTML(data, data2, color) {
          }
          
          .col {
-         flex: 1;
-         text-align: center;
+          flex: 1;
+          text-align: center;
          }
 ​
          a, a:hover {
@@ -178,7 +179,7 @@ function generateHTML(data, data2, color) {
             <img src="${data.avatar_url}" alt="Photo of ${data.name}" />
             <h1>Hi!</h1>
             <h2>
-            My name is ${data.name}!</h1>
+            My name is ${data.name}!</h2>
             <h5>${data.company ? `Currently @ ${data.company}` : ""}</h5>
             <nav class="links-nav">
                ${
@@ -208,8 +209,8 @@ function generateHTML(data, data2, color) {
                <div class="col">
                   <h3>${data.bio ? `${data.bio}` : ""}</h3>
                </div>
-               </div>
-               <div class="row">
+              </div>
+              <div class="row">
                <div class="col">
                   <div class="card">
                     <h3>Public Repositories</h3>

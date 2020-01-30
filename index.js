@@ -69,7 +69,11 @@ async function writeToFile(data) {
         const page = await browser.newPage();
         //console.log("Navigating to: " + __dirname + `/${data.githubUser}_profile.html`)
         await page.setContent(htmlcontent);
-        await page.pdf({path: `${data.githubUser}_profile.pdf`});
+        await page.screenshot();
+        await page.pdf({
+            path: `${data.githubUser}_profile.pdf`,
+            format: 'Letter'
+        });
         await browser.close();
         console.log("PDF file created!")
     }
